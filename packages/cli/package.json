@@ -1,0 +1,29 @@
+{
+  "name": "tapwire",
+  "version": "0.1.0",
+  "description": "Local HTTP mock/proxy tool for Node.js — capture, replay, and inspect traffic",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "tapwire": "bin/tapwire"
+  },
+  "files": ["dist", "bin"],
+  "engines": { "node": ">=18.0.0" },
+  "keywords": ["mock", "proxy", "http", "testing", "api", "interceptor", "devtools"],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.1",
+    "@mswjs/interceptors": "^0.41.4",
+    "hono": "^4.7.10",
+    "path-to-regexp": "^8.4.2"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "vitest": "*"
+  }
+}

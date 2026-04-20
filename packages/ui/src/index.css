@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: calc(1 / 0.625);
+}

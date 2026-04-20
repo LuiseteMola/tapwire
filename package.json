@@ -1,0 +1,35 @@
+{
+  "name": "tapwire",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "tsx packages/cli/src/index.ts",
+    "dev:server": "npm run dev --workspace=packages/server",
+    "dev:interceptors": "npm run dev --workspace=packages/interceptors",
+    "dev:ui": "npm run dev --workspace=packages/ui",
+    "dev:test-app": "nodemon --watch test-app --watch packages/interceptors/dist --ext ts,js,json --delay 1 --exec \"NODE_OPTIONS='--require ./packages/interceptors/dist/index.js' TAPWIRE_PORT=4000 tsx test-app/index.ts\"",
+    "dev:local": "concurrently --names 'server,interceptors,ui,test-app' --prefix-colors 'cyan,yellow,magenta,green' 'npm run dev:server' 'npm run dev:interceptors' 'npm run dev:ui' 'npm run dev:test-app'",
+    "build:server": "npm run build --workspace=packages/server",
+    "build:interceptors": "npm run build --workspace=packages/interceptors",
+    "build:ui": "npm run build --workspace=packages/ui",
+    "build:cli": "node build.mjs",
+    "build": "npm run build:cli",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json && npm run typecheck --workspaces --if-present",
+    "publish:cli": "npm run build:cli && npm publish ./dist"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.28.0",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vitest": "^2.1.9"
+  },
+  "dependencies": {
+    "axios": "^1.15.1"
+  }
+}

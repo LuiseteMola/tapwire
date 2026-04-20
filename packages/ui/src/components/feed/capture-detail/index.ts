@@ -1,0 +1,1 @@
+export { CaptureDetail } from './CaptureDetail';

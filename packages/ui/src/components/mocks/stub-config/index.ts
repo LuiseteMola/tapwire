@@ -1,0 +1,1 @@
+export { StubConfig } from './StubConfig';
